@@ -1,0 +1,71 @@
+<mujoco model="03-marble-domino">
+  <compiler angle="radian"/>
+  <option timestep="0.002" integrator="implicitfast"/>
+  <statistic center="0.1 0 0.5" extent="2.8"/>
+  <visual>
+    <global azimuth="115" elevation="-28"/>
+  </visual>
+
+  <asset>
+    <texture name="tiles" type="2d" builtin="checker" rgb1=".17 .21 .27" rgb2=".23 .29 .36"
+             width="256" height="256"/>
+    <material name="floor" texture="tiles" texrepeat="6 6" reflectance=".12"/>
+    <material name="track" rgba=".18 .42 .62 1"/>
+    <material name="steel" rgba=".84 .88 .95 1" specular="1" shininess=".85"/>
+  </asset>
+
+  <default>
+    <geom friction=".55 .005 .0001"/>
+    <default class="domino">
+      <geom type="box" size=".025 .115 .17" mass=".095"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <light pos="-2 -3 5" dir=".35 .5 -1" type="directional"/>
+    <geom name="floor" type="plane" size="6 4 .1" material="floor"/>
+    <body name="ramp" pos="-1.26 0 .36" euler="0 .30 0">
+      <geom type="box" size="1.14 .28 .05" material="track"/>
+      <geom type="box" pos="0 .28 .11" size="1.14 .025 .06" material="track"/>
+      <geom type="box" pos="0 -.28 .11" size="1.14 .025 .06" material="track"/>
+    </body>
+
+    <body name="marble" pos="-2.22 0 .81">
+      <freejoint/>
+      <geom type="sphere" size=".13" mass=".38" material="steel"/>
+    </body>
+
+    <body name="domino_1" pos=".18 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".95 .32 .21 1"/>
+    </body>
+    <body name="domino_2" pos=".36 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba="1 .58 .18 1"/>
+    </body>
+    <body name="domino_3" pos=".54 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".98 .81 .24 1"/>
+    </body>
+    <body name="domino_4" pos=".72 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".44 .76 .35 1"/>
+    </body>
+    <body name="domino_5" pos=".90 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".24 .76 .69 1"/>
+    </body>
+    <body name="domino_6" pos="1.08 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".27 .62 .90 1"/>
+    </body>
+    <body name="domino_7" pos="1.26 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".56 .44 .91 1"/>
+    </body>
+    <body name="domino_8" pos="1.44 0 .17" childclass="domino">
+      <freejoint/>
+      <geom rgba=".86 .38 .72 1"/>
+    </body>
+  </worldbody>
+</mujoco>
