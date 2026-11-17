@@ -32,7 +32,7 @@
 
     <body name="marble" pos="-2.22 0 .81">
       <freejoint/>
-      <geom type="sphere" size=".13" mass=".38" material="steel"/>
+      <geom type="sphere" size=".13" mass=".15" material="steel"/>
     </body>
 
     <body name="domino_1" pos=".18 0 .17" childclass="domino">
